@@ -9,7 +9,7 @@
 #include<stdlib.h>
 #include<string.h>
 
-struct cliente
+typedef struct
 {
     int cod;
     char nome[100];
@@ -18,25 +18,26 @@ struct cliente
     float salario;
 
 
-};
+}cliente;
 
 
-void imprimir()
+void imprimir(cliente c)
 {
-    struct cliente c;
-    system("cls");
-    printf(" \tCod: %d",c.cod);
-    printf(" \tNome: %s",c.nome);
-    printf(" \tIdade: %d",c.idade);
-    printf(" \tSexo: %c",c.sexo);
-    printf(" \tSalario: %.2f",c.salario);
+
+
+    printf(" \n \tCod: %d",c.cod);
+    printf(" \n \tNome: %s",c.nome);
+    printf(" \n \tIdade: %d",c.idade);
+    printf(" \n \tSexo: %c",c.sexo);
+    printf(" \n \tSalario: %.2f",c.salario);
+
 
 }
 
 
-void lerCliente()
+cliente lerCliente()
 {
-    struct cliente c;
+    cliente c;
     c.cod = 0;
     c.cod++;
     printf("\n \tDigite o nome do cliente: ");
@@ -71,11 +72,26 @@ void lerCliente()
     printf("\n \tDigite o Salario do cliente: ");
     scanf("%f",&c.salario);
     fflush(stdin);
+    return c;
 
 }
 int main()
 {
-    lerCliente();
-    imprimir();
+    cliente cli[3];
+    int i;
+
+    for(i = 0 ; i<3;i++){
+        cli[i] = lerCliente();
+    }
+
+
+
+    for(i = 0 ; i<3;i++){
+        imprimir(cli[i]);
+    }
+
+
     return 0;
+
+
 }
